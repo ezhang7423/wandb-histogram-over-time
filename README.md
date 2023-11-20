@@ -1,5 +1,17 @@
 # Wandb histogram over time example
 
+Edit: wandb supports this natively. Below solution is still useful though.
+
+```
+import wandb
+wandb.init()
+import numpy as np
+import math
+for i in range(1, 1000):
+    wandb.log({'gaussian_process':wandb.Histogram(np.random.randn(1000) * math.log(i) / 1000)})
+wandb.finish()
+```
+
 I wanted this:
 
 ![tensorboard histogram over time](tensorboard.png)
